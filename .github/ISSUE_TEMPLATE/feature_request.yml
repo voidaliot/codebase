@@ -1,0 +1,17 @@
+name: Feature request
+description: Suggest an improvement to Aliot Codebase.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: Describe the workflow or problem, including the language and diagram view if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Suggested improvement
+      description: Explain the result you would like and any alternatives you have tried.
+    validations:
+      required: true

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: User guide
+    url: https://github.com/voidaliot/codebase/blob/main/docs/user-guide.md
+    about: Illustrated workflows, commands, settings and troubleshooting.
+  - name: Language setup
+    url: https://github.com/voidaliot/codebase/blob/main/docs/languages.md
+    about: Language extensions, optional syntax tools and capability limits.

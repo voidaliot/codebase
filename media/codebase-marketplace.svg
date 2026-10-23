@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Aliot Codbase Marketplace icon</title>
+  <desc id="description">Marketplace icon based on the approved Aliot composition. Original star, grid, halo gaps, aura opacity, and node proportions are preserved. Codbase colors and symbol replace the SysML label.</desc>
+  <defs>
+    <linearGradient id="north" x1="256" y1="50" x2="256" y2="230" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c5b4f5"/><stop offset=".60" stop-color="#b4a0ed"/><stop offset="1" stop-color="#9e82db"/>
+    </linearGradient>
+    <linearGradient id="south" x1="256" y1="398" x2="256" y2="230" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c5b4f5"/><stop offset=".60" stop-color="#b4a0ed"/><stop offset="1" stop-color="#9e82db"/>
+    </linearGradient>
+    <linearGradient id="west" x1="74" y1="230" x2="256" y2="230" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c5b4f5"/><stop offset=".58" stop-color="#b4a0ed"/><stop offset="1" stop-color="#9e82db"/>
+    </linearGradient>
+    <linearGradient id="east" x1="438" y1="230" x2="256" y2="230" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c5b4f5"/><stop offset=".58" stop-color="#b4a0ed"/><stop offset="1" stop-color="#9e82db"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="211" y1="178" x2="301" y2="286" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#533974"/><stop offset=".44" stop-color="#67468e"/><stop offset="1" stop-color="#533974"/>
+    </linearGradient>
+    <linearGradient id="node" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8b69ce"/><stop offset="1" stop-color="#7951c3"/>
+    </linearGradient>
+  </defs>
+
+  <g>
+
+    <g id="symbol" transform="translate(256 256) scale(1.2) translate(-256 -230)">
+    <!-- The grid remains behind the rays and the opaque centre. -->
+    <path d="M118 100H394V360H118Z M118 230H394" stroke="#d6dfec" stroke-width="4.3" stroke-opacity="1" stroke-linejoin="round"/>
+    <circle cx="118" cy="100" r="18" fill="#7951c3" fill-opacity=".13"/>
+    <circle cx="118" cy="100" r="16" stroke="#7951c3" stroke-width="2" stroke-opacity=".6"/>
+    <circle cx="118" cy="100" r="12.5" fill="url(#node)"/>
+    <circle cx="394" cy="100" r="18" fill="#7951c3" fill-opacity=".13"/>
+    <circle cx="394" cy="100" r="16" stroke="#7951c3" stroke-width="2" stroke-opacity=".6"/>
+    <circle cx="394" cy="100" r="12.5" fill="url(#node)"/>
+    <circle cx="118" cy="360" r="18" fill="#7951c3" fill-opacity=".13"/>
+    <circle cx="118" cy="360" r="16" stroke="#7951c3" stroke-width="2" stroke-opacity=".6"/>
+    <circle cx="118" cy="360" r="12.5" fill="url(#node)"/>
+    <g id="bottom-right-label-node" transform="translate(394 360)" aria-label="Codbase">
+      <circle id="label-node-aura" r="62" fill="#7951c3" fill-opacity=".13"/>
+      <circle id="label-node-outline" r="59" stroke="#7951c3" stroke-width="2" stroke-opacity=".6"/>
+      <circle id="label-node-fill" r="54" fill="url(#node)"/>
+      <g id="product-symbol" transform="scale(2.3) translate(-32 -32)"><path d="m23 23-8 9 8 9m18-18 8 9-8 9m-5-22-8 26" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+    </g>
+    <!-- Four rays are independent shapes, not a cut-out star. -->
+    <g id="rays">
+      <path d="M256 50 L294 230 H218 Z" fill="url(#north)"/>
+      <path d="M256 398 L218 230 H294 Z" fill="url(#south)"/>
+      <path d="M74 230 L256 192 V268 Z" fill="url(#west)"/>
+      <path d="M438 230 L256 268 V192 Z" fill="url(#east)"/>
+    </g>
+    <!-- Separate circular body, followed by a solid white dot in BOTH themes. -->
+    <circle id="cobalt-ring" cx="256" cy="230" r="61" fill="url(#ring)"/>
+    <circle id="white-centre" cx="256" cy="230" r="44.5" fill="#ffffff"/>
+    </g>
+
+  </g>
+</svg>

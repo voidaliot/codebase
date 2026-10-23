@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a problem with Aliot Codebase.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Aliot Codebase. This issue will be public.
+        Use a small example you can share and remove credentials and confidential source from screenshots and logs.
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Aliot Codebase version, VS Code version and operating system.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Language and environment
+      description: Language, relevant language extensions, and local / SSH / WSL / container host.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include the diagram view and a minimal example if possible.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots and notes
+      description: Relevant Language health details, diagram notes or screenshots.

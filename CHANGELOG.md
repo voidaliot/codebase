@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.7.0 (2026-10-23)
+
+- Follow the refreshed installation and language guides, with full-size screenshots of workspace structure, calls and function flow.
+- Find documentation, screenshots and issue reporting in the public Codebase repository.
 - Use the Freeware License for personal, educational and commercial use; modification and redistribution of the extension are restricted. Third-party licenses are unchanged.
 
 ## 0.6.0 (2026-10-23)

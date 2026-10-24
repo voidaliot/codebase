@@ -28,7 +28,7 @@ Open **Language health** to check available capabilities and setup guidance. The
 
 Move between workspace and file scope, expand only the groups you need, and use search, properties and the minimap to stay oriented. Diagrams follow unsaved edits and support light and dark themes.
 
-Workspace diagrams retain the complete included model. Collapsing groups and filtering the view control what you see; exclusions and configured file limits remain explicit.
+Workspace diagrams retain every included file and discovered symbol. Collapsing groups and filtering the view control what you see; exclusions and configured file limits remain explicit.
 
 ## Investigate a change
 
@@ -78,7 +78,7 @@ See the [language setup guide](docs/languages.md) for required extensions, optio
 
 Codebase's analysis and diagram layout make no external requests, upload no source and do not run the analyzed program. Source navigation preserves unsaved buffers.
 
-Codebase supports desktop VS Code and remote Node extension hosts, including SSH, WSL and containers. Configure optional syntax tools on the host where the extension runs. Browser-only hosts such as vscode.dev are not supported.
+Codebase supports desktop VS Code and remote workspaces, including SSH, WSL and containers. Configure optional syntax tools on the machine where the extension runs. Browser-only hosts such as vscode.dev are not supported.
 
 Optional external syntax tools require a trusted workspace. Git review requires a trusted filesystem workspace and **Git 2.45 or newer**; it reads local objects without fetching, checking out files or changing the Git index.
 
@@ -89,8 +89,6 @@ Optional external syntax tools require a trusted workspace. Git review requires 
 - [Changelog](CHANGELOG.md) — features and fixes by version
 - [Report an issue](https://github.com/voidaliot/codebase/issues) — bugs, feature requests and questions
 - [Support](SUPPORT.md) — what to include when reporting a problem
-
-The [public repository](https://github.com/voidaliot/codebase) hosts documentation, screenshots and issue reports. Extension development source is maintained privately.
 
 ## License
 

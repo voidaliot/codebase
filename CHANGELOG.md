@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.7.1 (2026-10-24)
+
+- Preserve JSX branches and function targets in React-mode untitled files and custom file associations.
+- Keep focused Structure diagrams and baselines distinct from whole-file views. Previously captured focused Structure baselines need a fresh capture.
+- Retain manual node positions when expanding or refreshing, and center hidden findings after revealing them.
+- Report changed call counts accurately in baseline comparisons and keep large workspace indexing and comparisons more responsive to cancellation.
+
 ## 0.7.0 (2026-10-23)
 
 - Follow the refreshed installation and language guides, with full-size screenshots of workspace structure, calls and function flow.

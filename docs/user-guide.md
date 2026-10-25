@@ -2,9 +2,9 @@
 
 Use Codebase to understand a service, investigate a refactor and review source or dependency changes inside VS Code. Start with a workspace overview, follow a declaration into its file or function, and export the relevant diagram for your team's existing review and documentation process.
 
-This guide covers **Aliot Codebase 0.7.1**.
+This guide covers **Aliot Codebase 0.8.0**.
 
-The images show the current Codebase interface with a fictional **Order platform** sample. All project, source, provider, impact and review data is illustrative. Native VS Code naming, selection and save dialogs are not simulated in these images.
+The images illustrate the earlier 0.7.1 interface with a fictional **Order platform** sample; version 0.8.0 consolidates its toolbar and moves workspace navigation to the native sidebar as described below. All project, source, provider, impact and review data is illustrative. Native VS Code naming, selection and save dialogs are not simulated in these images.
 
 ## Install and open your first workspace
 
@@ -13,14 +13,14 @@ Codebase runs in desktop VS Code 1.96 or newer and remote Node extension hosts. 
 If you have a VSIX supplied by the publisher, use **Extensions: Install from VSIX…**, or:
 
 ```sh
-code --install-extension codebase-vsc-ext-0.7.1.vsix
+code --install-extension codebase-vsc-ext-0.8.0.vsix
 ```
 
 Open a folder or multi-root workspace, then:
 
-1. Run **Codebase: Open Workspace Diagrams** from the Command Palette.
-2. Choose **Structure** and expand a folder, file or class.
-3. Search for a declaration and select it to open its exact source range.
+1. Open the **Codebase** icon in the Activity Bar to browse the workspace.
+2. Expand a folder, file or class and select a row to open its diagram. A function opens its own flow directly.
+3. Choose the diagram view type, or search its symbols. Select a diagram symbol or use a sidebar row's **Open Source** action to open its exact source range.
 4. Open **Language health** in the bottom bar to inspect the workspace's language capabilities.
 5. Read any **notes** beside it before interpreting missing relationships or a limited diagram.
 
@@ -34,19 +34,19 @@ For a single file, run **Codebase: Open Diagrams**, use the editor title diagram
 
 | Feature | Where to use it | Result |
 | --- | --- | --- |
-| Workspace and file scope | **Workspace / File**, file picker and **Back to workspace** | Move between overview and focused inspection |
+| Workspace and file scope | Workspace root, folders and files in the **Workspace browser**; toolbar file picker | Move between overview and focused inspection |
 | Structure | **Structure** tab | Browse included files and declaration containment |
 | Calls and impact | **Call graph**, then a selected symbol's **Properties** | Inspect discovered calls, callers/callees, neighborhoods and paths |
-| Function flow | **Program flow**, function picker or **Open flow** | Follow static statement paths or disclosed call-site flow |
+| Function flow | Select a function in the **Workspace browser**, **Show diagram**, or **Open flow** | Follow static statement paths or disclosed call-site flow |
 | Module dependencies | **Modules** and **Module review** | Inspect static TS/JS imports, cycles and boundary rules |
 | Source navigation | Symbol cards, browser, **Open in editor** and result links | Open the exact current target while preserving diagram context |
 | Search and focus | Search box and filter button | Find hidden symbols and focus matches with their neighbors |
-| Hierarchy controls | Card/browser disclosure buttons and expand/collapse toolbar controls | Change visible detail while retaining the model |
+| Hierarchy controls | Card disclosure buttons and diagram expand/collapse toolbar controls | Change visible diagram detail while retaining the model |
 | Canvas arrangement | Drag, zoom, direction, arrange and fit controls | Organize the diagram for the question being investigated |
-| Symbol browser and minimap | Toolbar toggles | Navigate hierarchy and large diagrams |
-| Properties | Select a symbol and open **Properties** | Inspect source, contents and relationship previews; copy its name |
-| Saved views | **Save view**, **Restore view** and delete control | Retain named workspace exploration context |
-| Pins and history | **Pin symbol**, **Pins**, back/forward arrows | Return to useful declarations and recent contexts |
+| Workspace browser | **Codebase** Activity Bar icon | Browse the complete workspace without replacing or collapsing it during drilldown |
+| Properties | Right-click a symbol, or press `Shift+F10` on its focused card | Inspect source, contents and relationship previews; copy its name |
+| Saved views | **Codebase: Save Diagram View**, **Restore Diagram View** and **Delete Saved Diagram View** commands | Retain named workspace exploration context |
+| Pins and history | Contextual **Pin symbol**, **Codebase: Show Pinned Symbols**, **Previous Diagram** and **Next Diagram** commands | Return to useful declarations and recent contexts |
 | Git review | **Review changes → Git changes…** | Compare current included source and unsaved buffers with a local base |
 | Captured baseline | **Capture baseline / Compare baseline** | Compare the current graph with one retained local snapshot |
 | Export | Download control or **Codebase: Export Diagram** | Save complete JSON or visible/viewport SVG and PNG |
@@ -61,21 +61,31 @@ For a single file, run **Codebase: Open Diagrams**, use the editor title diagram
 | **Structure** | Roots, folders, files and discovered declarations, including disconnected files | Document symbols, or a focused declaration and its descendants |
 | **Call graph** | Calls reported for all discovered callables in included supported sources | A focused call graph using the configured file depth and node limits |
 | **Program flow** | A function inventory with targets for detailed drilldown | The selected function's statement flow, or an explained call-site fallback |
-| **Modules** | Static TS/JS file imports, cycles and configured boundary violations | Workspace-only: selecting it switches to Workspace; **File** returns to File Structure |
+| **Modules** | Static TS/JS file imports, cycles and configured boundary violations | Workspace-only: selecting it switches to Workspace; select a file in the sidebar or file picker to return to File Structure |
 
 Workspace scope stays on the workspace when you switch editors. File scope normally follows the active supported editor when `codebase.followActiveEditor` is enabled. An intentional source jump keeps the originating diagram and selected function in place.
+
+Codebase reuses one diagram tab in each VS Code window. Opening another file or function changes that shared tab. Use saved views and diagram history to return to earlier contexts, or a separate VS Code window for an independent diagram.
 
 The inventory includes every file allowed by the exclusion settings across all workspace roots. Unsupported file types remain visible as files. Folders are derived from included files, so empty directories are not displayed. Workspace file limits are optional and disclosed; detailed file diagrams have separate limits.
 
 ## Navigate and arrange the diagram
 
-Select a symbol card or browser row to inspect it and open its source. **Properties** shows its source location, children, available flow action and a preview of incoming/outgoing relationships. Use **Open file diagram** on a workspace file, **Inspect control flow** on a callable, or **Copy name** when recording a finding.
+Open the **Codebase** Activity Bar icon for the native **Workspace browser**. Its tree always contains the complete included workspace file and declaration hierarchy, independently of the diagram's scope, view, collapse or filtering. Select a workspace root or folder for its workspace context, a file for its file diagram, a class or other declaration for its focused structure, or a function for its inside flow. The corresponding **Open Diagram** context action is also available. Use **Open Source** to open a source range while preserving the current diagram.
+
+Sidebar expansion is independent of canvas expansion. Opening another diagram and closing or reopening its tab keep the workspace tree and expanded branches in place. Selecting a symbol in a diagram moves the sidebar selection to its corresponding declaration; selecting a statement in a function keeps that function selected. This synchronization does not steal editor focus or trigger another diagram.
+
+Use the sidebar refresh action or **Codebase: Refresh Workspace Browser** to retry its analysis, including when no diagram tab is open. The same workspace exclusions and configured limits apply to the sidebar and workspace diagrams.
+
+One top toolbar presents **Structure**, **Call graph**, **Program flow** and **Modules**, followed by the file selector, **Find a symbol**, refresh and export. Select the workspace root in the sidebar to return to the overview.
+
+Right-click a diagram symbol, or press `Shift+F10` on its focused card, to open **Properties**. It shows the selected item's source location, children, available flow action and a preview of incoming/outgoing relationships. Use **Open file diagram** on a workspace file, **Inspect control flow** on a callable, or **Copy name** when recording a finding.
 
 Expand one group with its disclosure control, or use **Expand entire hierarchy** and **Collapse entire hierarchy**. Collapsed groups retain hidden descendants; connections can be redirected and combined at visible ancestors. Counts in the bottom bar distinguish visible objects from the complete current model.
 
 Search includes hidden symbols and exposes their hierarchy paths. The filter control **Focus matches and their neighbors** narrows presentation without changing the analyzed model. Clear the search to return to ordinary browsing.
 
-Drag nodes to rearrange them. Use the zoom controls, **Fit diagram to view**, the minimap and **Tree direction** to move between overview and detail. **Arrange nodes automatically** discards the current arrangement for that diagram and computes a new one. Positions and direction are remembered for the diagram context. The symbol browser, properties and minimap can each be hidden from the toolbar.
+Drag nodes to rearrange them. The bottom canvas controls group zoom, **Fit diagram to view**, hierarchy expansion/collapse, **Tree direction** and **Arrange nodes automatically**. Automatic arrangement discards the current arrangement for that diagram and computes a new one. Positions and direction are remembered for the diagram context.
 
 Large diagrams use a lightweight overview at distant zoom levels and detailed cards when zoomed in. Their full model remains available for search, source targets and complete JSON export.
 
@@ -85,7 +95,9 @@ Large diagrams use a lightweight overview at distant zoom levels and detailed ca
 | --- | --- |
 | Focus diagram search | `Ctrl+F` on Windows/Linux or `Cmd+F` on macOS while the panel has focus |
 | Clear search/selection and close open review, health, module or notes panels | `Esc` |
-| Activate a focused button or symbol-browser item | Standard `Enter` or `Space` button behavior |
+| Activate a focused button | Standard `Enter` or `Space` button behavior |
+| Open a focused diagram symbol's properties | `Shift+F10` or the Context Menu key |
+| Open a native browser item's diagram | `Up Arrow` / `Down Arrow`, then `Enter` |
 | Expand a browser item | `Right Arrow` on its focused row |
 | Collapse a browser item or move to its parent | `Left Arrow` on its focused row |
 | Move through controls, selectors and result pages | `Tab` / `Shift+Tab`, then native button/select keys |
@@ -120,7 +132,7 @@ Impact results use discovered calls in the current diagram. Dynamic, unresolved 
 
 ### Inspect function flow
 
-Use **Open flow**, **Inspect control flow**, an inline **Show diagram** link, or the File **Program flow** function selector. Statement flow can show assignments, branches, loops, selection alternatives, returns, explicit throws and cleanup paths. Nested functions have separate targets.
+Select a function in the **Workspace browser**, use **Open flow** or **Inspect control flow**, or activate its inline **Show diagram** link. Statement flow can show assignments, branches, loops, selection alternatives, returns, explicit throws and cleanup paths. Nested functions have separate targets.
 
 ![Detailed function flow with a loop and cleanup path](images/04-detailed-flow.png)
 
@@ -193,15 +205,17 @@ This compares the graph you actually captured; it does not reanalyze a Git commi
 
 ## Save views and pin symbols
 
-**Save view** records the scope, diagram kind, file/function or focused structure context, expansion, direction, viewport, positions, search, match filter and selected symbol when it can be reconciled. Enter a name in the native VS Code dialog; reusing a name replaces that view. Use **Restore view** to select it later and the delete control to remove one.
+Run **Codebase: Save Diagram View** from the Command Palette to record the scope, diagram kind, file/function or focused structure context, expansion, direction, viewport, positions, search, match filter and selected symbol when it can be reconciled. Enter a name in the native VS Code dialog; reusing a name replaces that view. Use **Codebase: Restore Diagram View** to select it later and **Codebase: Delete Saved Diagram View** to remove one.
 
 ![Saved views toolbar and a pinned symbol](images/06-saved-views-pins.png)
 
-*Order platform sample: save and restore a diagram, navigate exploration history and pin a named symbol for a later session. Native naming and selection dialogs are outside this image.*
+*Earlier 0.7.1 Order platform sample: version 0.8.0 moves these toolbar actions to the Command Palette. Native naming and selection dialogs are outside this image.*
 
-In **Properties**, choose **Pin symbol** or **Unpin symbol**. **Pins** opens the workspace's bookmarks and also offers removal. A pin opens source only after resolving uniquely in the current model. Missing or ambiguous matches remain visible; generated or unnamed items may have no persistent identity.
+Right-click a diagram node to open **Properties**, then choose **Pin symbol** or **Unpin symbol**. **Codebase: Show Pinned Symbols** opens the workspace's bookmarks and also offers removal. A pin opens source only after resolving uniquely in the current model. Missing or ambiguous matches remain visible; generated or unnamed items may have no persistent identity.
 
-Back/forward arrows navigate diagram exploration history for the session. Restoring a view or history context does not intentionally jump the source editor; choosing a matched pin does. Saved identities reconcile current declarations rather than reusing old source coordinates.
+Use **Codebase: Previous Diagram** and **Codebase: Next Diagram** to navigate diagram exploration history for the session. Restoring a view or history context does not intentionally jump the source editor; choosing a matched pin does. Saved identities reconcile current declarations rather than reusing old source coordinates.
+
+Function-flow groups without stable saved identities reopen with their current default expansion, with a notice explaining the reset. Saved expansion and collapse choices for identifiable declarations remain intact, and the sidebar follows the restored function.
 
 The local workspace library supports **20 named views and 100 pins within 2 MiB**, with up to **5,000 saved positions per view**. Session history retains up to **30 entries within a separate 2 MiB budget**. Oversized saves are refused explicitly; collapse unneeded groups, reset positions with **Arrange nodes automatically**, or remove unused views/pins before retrying. Unreconciled presentation targets are reported rather than guessed.
 
@@ -284,9 +298,15 @@ Every command below has the **Codebase:** prefix in the Command Palette.
 | **Show Call Graph** | Open a file call graph |
 | **Show Program Flow** | Open file/function flow |
 | **Refresh Diagrams** | Retry the current diagram's analysis |
+| **Refresh Workspace Browser** | Refresh the complete native workspace hierarchy, with or without an open diagram |
+| **Save Diagram View** | Save the current diagram's context and presentation |
+| **Restore Diagram View** | Choose a saved workspace diagram view |
+| **Delete Saved Diagram View** | Remove a saved diagram view |
+| **Show Pinned Symbols** | Browse or remove workspace symbol bookmarks |
+| **Previous Diagram** / **Next Diagram** | Navigate the session's diagram history |
 | **Export Diagram** | Choose the current model/image export format and destination |
 
-Saved views, pins, impact, review and language-health actions are controls inside the diagram panel. **Show diagram** is the inline declaration action.
+Impact and symbol pinning are available through contextual diagram properties; review and language-health actions remain in the diagram's bottom bar. **Show diagram** is the inline declaration action.
 
 ## Settings
 

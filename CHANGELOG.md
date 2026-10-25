@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.8.0 (2026-10-25)
+
+- Browse the complete workspace from the Codebase Activity Bar icon. Open file, declaration and function diagrams directly from the sidebar while retaining expanded branches and following diagram selection.
+- Use one compact toolbar for diagram types, file selection, symbol search, refresh and export, with zoom and layout controls together at the bottom of the canvas.
+- Restore function flow through saved views and history without collapsing its body, and keep the sidebar selection on the restored function.
+
 ## 0.7.1 (2026-10-24)
 
 - Preserve JSX branches and function targets in React-mode untitled files and custom file associations.

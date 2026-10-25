@@ -9,11 +9,13 @@ Explore your codebase through interactive diagrams of structure, calls, program 
 ## Get started
 
 1. In **VS Code 1.96 or newer**, open Extensions, search for **Aliot Codebase** by **voidaliot**, and install it. Open a folder or multi-root workspace.
-2. Run **Codebase: Open Workspace Diagrams** from the Command Palette.
+2. Open the **Codebase** icon in the Activity Bar to browse the workspace, or run **Codebase: Open Workspace Diagrams** from the Command Palette.
 3. Choose **Structure**, **Call graph**, **Program flow** or **Modules**.
-4. Expand a folder, search for a symbol, then select it to open its source.
+4. Expand a folder and select a file or declaration in the sidebar to open its diagram. Selecting a function opens its inside flow directly.
 
 For a single file, use the **Codebase: Open Diagrams** icon in the editor toolbar. You can also select **Show diagram** above a declaration to open its structure or function flow beside your code.
+
+If the publisher supplies a VSIX, install it with `code --install-extension codebase-vsc-ext-0.8.0.vsix` or **Extensions: Install from VSIX…**.
 
 Open **Language health** to check available capabilities and setup guidance. The [user guide](docs/user-guide.md) walks through each feature, command and setting.
 
@@ -26,7 +28,9 @@ Open **Language health** to check available capabilities and setup guidance. The
 | **Program flow** | Browse workspace functions and inspect the statement flow of a selected function. |
 | **Modules** | Inspect TypeScript and JavaScript imports, cycles and configured dependency boundaries. |
 
-Move between workspace and file scope, expand only the groups you need, and use search, properties and the minimap to stay oriented. Diagrams follow unsaved edits and support light and dark themes.
+The native **Workspace browser** under the Codebase icon keeps the whole included workspace visible while you open files, classes and functions. Its expanded branches stay in place, and selection follows diagram navigation. Select the workspace root to return to the overview; use a row's **Open Source** action for its source range. Diagrams follow unsaved edits and support light and dark themes.
+
+The top toolbar contains view types, file selection, symbol search, refresh and export. Zoom, fit, hierarchy and layout controls sit together at the bottom of the canvas.
 
 Workspace diagrams retain every included file and discovered symbol. Collapsing groups and filtering the view control what you see; exclusions and configured file limits remain explicit.
 
@@ -44,7 +48,7 @@ Call graphs reflect the relationships reported by your language tools. Dynamic o
 
 ## Look inside a function
 
-Open **Program flow** or a declaration's **Show diagram** link to inspect branches, loops, returns and cleanup paths. Select a statement to return to its source.
+Select a function in the **Workspace browser**, open **Program flow**, or use a declaration's **Show diagram** link to inspect branches, loops, returns and cleanup paths. Select a statement to return to its source.
 
 [![Function flow showing a loop, conditional branches, returns and cleanup](docs/images/04-detailed-flow.png)](docs/images/04-detailed-flow.png)
 

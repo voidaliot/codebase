@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.9.0 (2026-10-25)
+
+- Keep loop exits and return paths clear of intermediate branches, with separate return lanes and consistent routing in diagrams and image exports. Fit includes the outer paths, and dragging a node updates its connections.
+- Navigate search matches with Enter, Shift+Enter or next/previous controls without leaving the diagram. Clear empty search results directly, and use arrow, Home and End keys on the view tabs.
+- Preserve expanded sidebar declarations after source edits move them. Clicking a retained workspace item refreshes its target when needed, including with automatic refresh disabled.
+- Retry failed connection routing without losing dragged positions. Keep dimmed edge labels and exported flow guards consistent, and prevent Unicode symbol identifiers from reusing another diagram's cached layout.
+
 ## 0.8.0 (2026-10-25)
 
 - Browse the complete workspace from the Codebase Activity Bar icon. Open file, declaration and function diagrams directly from the sidebar while retaining expanded branches and following diagram selection.

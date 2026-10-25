@@ -2,7 +2,7 @@
 
 Use Codebase to understand a service, investigate a refactor and review source or dependency changes inside VS Code. Start with a workspace overview, follow a declaration into its file or function, and export the relevant diagram for your team's existing review and documentation process.
 
-This guide covers **Aliot Codebase 0.8.0**.
+This guide covers **Aliot Codebase 0.9.0**.
 
 The images illustrate the earlier 0.7.1 interface with a fictional **Order platform** sample; version 0.8.0 consolidates its toolbar and moves workspace navigation to the native sidebar as described below. All project, source, provider, impact and review data is illustrative. Native VS Code naming, selection and save dialogs are not simulated in these images.
 
@@ -13,7 +13,7 @@ Codebase runs in desktop VS Code 1.96 or newer and remote Node extension hosts. 
 If you have a VSIX supplied by the publisher, use **Extensions: Install from VSIX…**, or:
 
 ```sh
-code --install-extension codebase-vsc-ext-0.8.0.vsix
+code --install-extension codebase-vsc-ext-0.9.0.vsix
 ```
 
 Open a folder or multi-root workspace, then:
@@ -73,9 +73,9 @@ The inventory includes every file allowed by the exclusion settings across all w
 
 Open the **Codebase** Activity Bar icon for the native **Workspace browser**. Its tree always contains the complete included workspace file and declaration hierarchy, independently of the diagram's scope, view, collapse or filtering. Select a workspace root or folder for its workspace context, a file for its file diagram, a class or other declaration for its focused structure, or a function for its inside flow. The corresponding **Open Diagram** context action is also available. Use **Open Source** to open a source range while preserving the current diagram.
 
-Sidebar expansion is independent of canvas expansion. Opening another diagram and closing or reopening its tab keep the workspace tree and expanded branches in place. Selecting a symbol in a diagram moves the sidebar selection to its corresponding declaration; selecting a statement in a function keeps that function selected. This synchronization does not steal editor focus or trigger another diagram.
+Sidebar expansion is independent of canvas expansion. Opening another diagram and closing or reopening its tab keep the workspace tree and expanded branches in place. Refresh preserves expanded declarations when they can be uniquely matched after source edits move them. Selecting a symbol in a diagram moves the sidebar selection to its corresponding declaration; selecting a statement in a function keeps that function selected. This synchronization does not steal editor focus or trigger another diagram.
 
-Use the sidebar refresh action or **Codebase: Refresh Workspace Browser** to retry its analysis, including when no diagram tab is open. The same workspace exclusions and configured limits apply to the sidebar and workspace diagrams.
+Use the sidebar refresh action or **Codebase: Refresh Workspace Browser** to retry its analysis, including when no diagram tab is open. Clicking an item in a retained tree after a source change updates that snapshot before opening the current target, even when automatic refresh is disabled. Removed or ambiguous items ask you to choose again. The same workspace exclusions and configured limits apply to the sidebar and workspace diagrams.
 
 One top toolbar presents **Structure**, **Call graph**, **Program flow** and **Modules**, followed by the file selector, **Find a symbol**, refresh and export. Select the workspace root in the sidebar to return to the overview.
 
@@ -83,9 +83,11 @@ Right-click a diagram symbol, or press `Shift+F10` on its focused card, to open 
 
 Expand one group with its disclosure control, or use **Expand entire hierarchy** and **Collapse entire hierarchy**. Collapsed groups retain hidden descendants; connections can be redirected and combined at visible ancestors. Counts in the bottom bar distinguish visible objects from the complete current model.
 
-Search includes hidden symbols and exposes their hierarchy paths. The filter control **Focus matches and their neighbors** narrows presentation without changing the analyzed model. Clear the search to return to ordinary browsing.
+Search includes hidden symbols and exposes their hierarchy paths. Press `Enter` or `Shift+Enter` in the search field, or use its next/previous buttons, to center matching symbols without opening source editors. The counter shows your position among the matches. The filter control **Focus matches and their neighbors** narrows presentation without changing the analyzed model. A search with no matches offers **Clear search** to return to ordinary browsing.
 
 Drag nodes to rearrange them. The bottom canvas controls group zoom, **Fit diagram to view**, hierarchy expansion/collapse, **Tree direction** and **Arrange nodes automatically**. Automatic arrangement discards the current arrangement for that diagram and computes a new one. Positions and direction are remembered for the diagram context.
+
+Loop exits route around intermediate branches, with return paths in separate lanes. Connections update after dragging; Fit includes their outer paths. If updating connections fails, **Retry** preserves your node positions. SVG and PNG use the same settled routes and flow-guard notation as the diagram.
 
 Large diagrams use a lightweight overview at distant zoom levels and detailed cards when zoomed in. Their full model remains available for search, source targets and complete JSON export.
 
@@ -94,7 +96,10 @@ Large diagrams use a lightweight overview at distant zoom levels and detailed ca
 | Action | Key or control |
 | --- | --- |
 | Focus diagram search | `Ctrl+F` on Windows/Linux or `Cmd+F` on macOS while the panel has focus |
-| Clear search/selection and close open review, health, module or notes panels | `Esc` |
+| Next / previous matching symbol | `Enter` / `Shift+Enter` in search |
+| Clear search without closing other panels | `Esc` in a nonempty search field |
+| Clear selection and close open review, health, module or notes panels | `Esc` after search is clear |
+| Change diagram view from a focused tab | `Left Arrow` / `Right Arrow`, `Home` / `End` |
 | Activate a focused button | Standard `Enter` or `Space` button behavior |
 | Open a focused diagram symbol's properties | `Shift+F10` or the Context Menu key |
 | Open a native browser item's diagram | `Up Arrow` / `Down Arrow`, then `Enter` |

@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.10.0 (2026-10-26)
+
+- Keep the toolbar on one row in narrow panels by showing diagram icons, with horizontal scrolling when needed. Simplify separators between the bottom control groups.
+- Show the current zoom below the controls and click it to reset to 100%. Arrange nodes automatically without changing pan or zoom; Fit remains a separate action.
+- Center condition labels within their decision diamonds, including labels that open source.
+
 ## 0.9.1 (2026-10-26)
 
 - Keep restored and newly selected symbols synchronized with the sidebar while workspace indexing is in progress, without replacing a newer navigation choice.

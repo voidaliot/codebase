@@ -2,7 +2,7 @@
 
 Use Codebase to understand a service, investigate a refactor and review source or dependency changes inside VS Code. Start with a workspace overview, follow a declaration into its file or function, and export the relevant diagram for your team's existing review and documentation process.
 
-This guide covers **Aliot Codebase 0.9.1**.
+This guide covers **Aliot Codebase 0.10.0**.
 
 The images illustrate the earlier 0.7.1 interface with a fictional **Order platform** sample; version 0.8.0 consolidates its toolbar and moves workspace navigation to the native sidebar as described below. All project, source, provider, impact and review data is illustrative. Native VS Code naming, selection and save dialogs are not simulated in these images.
 
@@ -13,7 +13,7 @@ Codebase runs in desktop VS Code 1.96 or newer and remote Node extension hosts. 
 If you have a VSIX supplied by the publisher, use **Extensions: Install from VSIX…**, or:
 
 ```sh
-code --install-extension codebase-vsc-ext-0.9.1.vsix
+code --install-extension codebase-vsc-ext-0.10.0.vsix
 ```
 
 Open a folder or multi-root workspace, then:
@@ -77,7 +77,7 @@ Sidebar expansion is independent of canvas expansion. Opening another diagram an
 
 Use the sidebar refresh action or **Codebase: Refresh Workspace Browser** to retry its analysis, including when no diagram tab is open. Clicking an item in a retained tree after a source change updates that snapshot before opening the current target, even when automatic refresh is disabled. Removed or ambiguous items ask you to choose again. The same workspace exclusions and configured limits apply to the sidebar and workspace diagrams.
 
-One top toolbar presents **Structure**, **Call graph**, **Program flow** and **Modules**, followed by the file selector, **Find a symbol**, refresh and export. Select the workspace root in the sidebar to return to the overview.
+One top toolbar presents **Structure**, **Call graph**, **Program flow** and **Modules**, followed by the file selector, **Find a symbol**, refresh and export. It stays on one row as the editor group narrows: the view tabs show icons with tooltips instead of text and counts, then the toolbar scrolls horizontally if the compact controls still cannot fit. The controls remain accessible by keyboard. Select the workspace root in the sidebar to return to the overview.
 
 Right-click a diagram symbol, or press `Shift+F10` on its focused card, to open **Properties**. It shows the selected item's source location, children, available flow action and a preview of incoming/outgoing relationships. Use **Open file diagram** on a workspace file, **Inspect control flow** on a callable, or **Copy name** when recording a finding.
 
@@ -85,7 +85,7 @@ Expand one group with its disclosure control, or use **Expand entire hierarchy**
 
 Search includes hidden symbols and exposes their hierarchy paths. Press `Enter` or `Shift+Enter` in the search field, or use its next/previous buttons, to center matching symbols without opening source editors. The counter shows your position among the matches. The filter control **Focus matches and their neighbors** narrows presentation without changing the analyzed model. A search with no matches offers **Clear search** to return to ordinary browsing.
 
-Drag nodes to rearrange them. The bottom canvas controls group zoom, **Fit diagram to view**, hierarchy expansion/collapse, **Tree direction** and **Arrange nodes automatically**. Automatic arrangement discards the current arrangement for that diagram and computes a new one. Positions and direction are remembered for the diagram context.
+Drag nodes to rearrange them. The bottom canvas controls group zoom, **Fit diagram to view**, hierarchy expansion/collapse, **Tree direction** and **Arrange nodes automatically**, with separators between groups. The percentage below the controls shows the current zoom; click it to reset to **100%** while keeping the current viewport center in place. Automatic arrangement discards the current arrangement for that diagram and computes a new one while preserving pan and zoom. Use **Fit diagram to view** when you want to fit the resulting arrangement. Positions and direction are remembered for the diagram context.
 
 Loop exits route around intermediate branches, with return paths in separate lanes. Connections update after dragging; Fit includes their outer paths. If updating connections fails, **Retry** preserves your node positions. SVG and PNG use the same settled routes and flow-guard notation as the diagram.
 
@@ -224,7 +224,7 @@ Function-flow groups without stable saved identities reopen with their current d
 
 The local workspace library supports **20 named views and 100 pins within 2 MiB**, with up to **5,000 saved positions per view**. Session history retains up to **30 entries within a separate 2 MiB budget**. Oversized saves are refused explicitly; collapse unneeded groups, reset positions with **Arrange nodes automatically**, or remove unused views/pins before retrying. Unreconciled presentation targets are reported rather than guessed.
 
-These features are local workspace state, not cloud synchronization or a shared team workspace. Use exported diagrams to share a finding.
+These features use VS Code's local workspace storage, so saving a view does not create a JSON file in your project. The workspace browser rebuilds its file and declaration inventory from current source and providers; a complete-model JSON export is a snapshot for review, not a replacement for that live inventory. Use exported diagrams to share a finding.
 
 ## Export for reviews and documentation
 

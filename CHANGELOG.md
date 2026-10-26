@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.9.1 (2026-10-26)
+
+- Keep restored and newly selected symbols synchronized with the sidebar while workspace indexing is in progress, without replacing a newer navigation choice.
+
 ## 0.9.0 (2026-10-25)
 
 - Keep loop exits and return paths clear of intermediate branches, with separate return lanes and consistent routing in diagrams and image exports. Fit includes the outer paths, and dragging a node updates its connections.

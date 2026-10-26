@@ -2,7 +2,7 @@
 
 Use Codebase to understand a service, investigate a refactor and review source or dependency changes inside VS Code. Start with a workspace overview, follow a declaration into its file or function, and export the relevant diagram for your team's existing review and documentation process.
 
-This guide covers **Aliot Codebase 0.9.0**.
+This guide covers **Aliot Codebase 0.9.1**.
 
 The images illustrate the earlier 0.7.1 interface with a fictional **Order platform** sample; version 0.8.0 consolidates its toolbar and moves workspace navigation to the native sidebar as described below. All project, source, provider, impact and review data is illustrative. Native VS Code naming, selection and save dialogs are not simulated in these images.
 
@@ -13,7 +13,7 @@ Codebase runs in desktop VS Code 1.96 or newer and remote Node extension hosts. 
 If you have a VSIX supplied by the publisher, use **Extensions: Install from VSIX…**, or:
 
 ```sh
-code --install-extension codebase-vsc-ext-0.9.0.vsix
+code --install-extension codebase-vsc-ext-0.9.1.vsix
 ```
 
 Open a folder or multi-root workspace, then:

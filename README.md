@@ -15,7 +15,7 @@ Explore your codebase through interactive diagrams of structure, calls, program 
 
 For a single file, use the **Codebase: Open Diagrams** icon in the editor toolbar. You can also select **Show diagram** above a declaration to open its structure or function flow beside your code.
 
-If the publisher supplies a VSIX, install it with `code --install-extension codebase-vsc-ext-0.9.0.vsix` or **Extensions: Install from VSIX…**.
+If the publisher supplies a VSIX, install it with `code --install-extension codebase-vsc-ext-0.9.1.vsix` or **Extensions: Install from VSIX…**.
 
 Open **Language health** to check available capabilities and setup guidance. The [user guide](docs/user-guide.md) walks through each feature, command and setting.
 

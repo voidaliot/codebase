@@ -2,7 +2,7 @@
 
 Use Codebase to understand a service, investigate a refactor and review source or dependency changes inside VS Code. Start with a workspace overview, follow a declaration into its file or function, and export the relevant diagram for your team's existing review and documentation process.
 
-This guide covers **Aliot Codebase 0.10.0**.
+This guide covers **Aliot Codebase 0.11.0**.
 
 The images illustrate the earlier 0.7.1 interface with a fictional **Order platform** sample; version 0.8.0 consolidates its toolbar and moves workspace navigation to the native sidebar as described below. All project, source, provider, impact and review data is illustrative. Native VS Code naming, selection and save dialogs are not simulated in these images.
 
@@ -13,7 +13,7 @@ Codebase runs in desktop VS Code 1.96 or newer and remote Node extension hosts. 
 If you have a VSIX supplied by the publisher, use **Extensions: Install from VSIX…**, or:
 
 ```sh
-code --install-extension codebase-vsc-ext-0.10.0.vsix
+code --install-extension codebase-vsc-ext-0.11.0.vsix
 ```
 
 Open a folder or multi-root workspace, then:
@@ -224,7 +224,7 @@ Function-flow groups without stable saved identities reopen with their current d
 
 The local workspace library supports **20 named views and 100 pins within 2 MiB**, with up to **5,000 saved positions per view**. Session history retains up to **30 entries within a separate 2 MiB budget**. Oversized saves are refused explicitly; collapse unneeded groups, reset positions with **Arrange nodes automatically**, or remove unused views/pins before retrying. Unreconciled presentation targets are reported rather than guessed.
 
-These features use VS Code's local workspace storage, so saving a view does not create a JSON file in your project. The workspace browser rebuilds its file and declaration inventory from current source and providers; a complete-model JSON export is a snapshot for review, not a replacement for that live inventory. Use exported diagrams to share a finding.
+These features use VS Code's local workspace storage, so saving a view does not create a JSON file in your project. File diagrams analyze the selected file without starting a hidden workspace scan. The visible workspace browser indexes independently, leaving provider capacity available for file requests. Bounded in-memory indexes survive diagram close/reopen for this VS Code session; source, configuration and filesystem changes still invalidate them. Selecting a retained declaration revalidates its own source without waiting for a whole-workspace scan. The browser reconstructs its inventory after an extension-host restart; a complete-model JSON export is a snapshot for review, not a replacement for that live inventory. Use exported diagrams to share a finding.
 
 ## Export for reviews and documentation
 

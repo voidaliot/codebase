@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 0.11.0 (2026-10-27)
+
+- File diagrams no longer start hidden workspace indexing; the visible browser leaves provider capacity available for file requests. Keep explicit file-opening requests active when the previous diagram refreshes in the background.
+- Reuse bounded workspace and syntax caches across diagram close/reopen, and revalidate retained sidebar declarations using only their source file.
+
 ## 0.10.0 (2026-10-26)
 
 - Keep the toolbar on one row in narrow panels by showing diagram icons, with horizontal scrolling when needed. Simplify separators between the bottom control groups.
